@@ -1,0 +1,13 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TicketingTool.Models
+{
+    public class Status
+    {
+        [Required]
+        public int ID { get; set; }
+
+        [Required]
+        public string StatusName { get; set; }
+    }
+}
