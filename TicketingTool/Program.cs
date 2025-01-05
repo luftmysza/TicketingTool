@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TicketingTool.Data;
+using TicketingTool.Areas.Identity.Data;
 namespace TicketingTool
 {
     public class Program
@@ -8,7 +9,7 @@ namespace TicketingTool
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var connectionString = builder.Configuration.GetConnectionString("ApplicationDBContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDBContextConnection' not found.");
+            var connectionString = builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string 'ApplicationDBContextConnection' not found.");
 
             builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(connectionString));
 

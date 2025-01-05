@@ -4,9 +4,9 @@ namespace TicketingTool.Models
 {
     public class Status
     {
+        [Key]
         [Required]
         public int ID { get; set; }
-
         [Required]
         public string StatusName { get; set; }
     }

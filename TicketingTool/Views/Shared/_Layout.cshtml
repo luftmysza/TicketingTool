@@ -23,13 +23,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Browse">All Tickets</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Projects" asp-action="Index">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Browse">My Tickets</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Browse" asp-action="Index">All Tickets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Create">Create</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Browse" asp-action="Index">My Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Ticket" asp-action="Create">Create</a>
                         </li>
                     </ul>
                 </div>
@@ -44,7 +47,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - TicketingTool - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; Dzmitry Zaitsau, 2025 - TicketingTool
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
