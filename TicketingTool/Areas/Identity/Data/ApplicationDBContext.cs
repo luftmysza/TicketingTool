@@ -8,7 +8,7 @@ using TicketingTool.Models;
 
 namespace TicketingTool.Data;
 
-public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
+public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityRole<int>, int>
 {
     public DbSet<TicketingTool.Models.Ticket> Ticket { get; set; } = default!;
     public DbSet<TicketingTool.Models.Project> Project { get; set; } = default!;
@@ -26,19 +26,9 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
         // Add your customizations after calling base.OnModelCreating(builder);
 
 
-        // Seed ApplicationUser first
-        builder.Entity<ApplicationUser>().HasData(
-            new ApplicationUser
-            {
-                Id = "1",
-                UserName = "X001",
-                NormalizedUserName = "X001",
-                AccessFailedCount = 0,
-                LockoutEnabled = false
-            }
-        );
 
-        SeedData(builder);
+        SeedUserData(builder);
+        SeedMiscData(builder);
         ConfigureEntities(builder);
     }
     private void ConfigureEntities(ModelBuilder builder)
@@ -55,6 +45,11 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
             .WithOne(t => t.AssigneeRef)
             .HasForeignKey(t => t.AssigneeID)
             .OnDelete(DeleteBehavior.Restrict);
+
+        //Project
+
+            
+
 
         //Ticket Change
         builder.Entity<TicketChange>()
@@ -97,7 +92,68 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
         builder.Entity<Component2Project>().
             HasKey(t => new { t.ComponentID, t.ProjectID });
     }
-    private void SeedData(ModelBuilder builder)
+    private void SeedUserData(ModelBuilder builder)
+    {
+        builder.Entity<IdentityRole<int>>().HasData(
+          new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
+          new IdentityRole<int> { Id = 2, Name = "Project Manager", NormalizedName = "MANAGER" },
+          new IdentityRole<int> { Id = 3, Name = "User", NormalizedName = "USER" },
+          new IdentityRole<int> { Id = 4, Name = "Technical User", NormalizedName = "TECH" }
+          
+        );
+
+        var hasher = new PasswordHasher<ApplicationUser>();
+
+        // Seed ApplicationUser first
+
+        var adminUser = new ApplicationUser
+        {
+            Id = 1,
+            Name = "Admin",
+            Surname = "User",
+            UserName = "X001",
+            NormalizedUserName = "X001",
+            AccessFailedCount = 0,
+            LockoutEnabled = false,
+            SecurityStamp = Guid.NewGuid().ToString()
+        };
+        adminUser.PasswordHash = hasher.HashPassword(adminUser, "password");
+        var ticketCreator = new ApplicationUser
+        {
+            Id = 2,
+            Name = "Ticket",
+            Surname = "Creator",
+            UserName = "TECH01",
+            NormalizedUserName = "TECH01",
+            AccessFailedCount = 0,
+            LockoutEnabled = false,
+            SecurityStamp = Guid.NewGuid().ToString()
+        };
+        ticketCreator.PasswordHash = hasher.HashPassword(ticketCreator, "password");
+        var jobUser = new ApplicationUser
+        {
+            Id = 3,
+            Name = "Job",
+            Surname = "User",
+            UserName = "TECH02",
+            NormalizedUserName = "TECH02",
+            AccessFailedCount = 0,
+            LockoutEnabled = false,
+            SecurityStamp = Guid.NewGuid().ToString()
+        };
+        jobUser.PasswordHash = hasher.HashPassword(jobUser, "password");
+
+        builder.Entity<ApplicationUser>().HasData(
+            adminUser, ticketCreator, jobUser    
+        );
+
+        builder.Entity<IdentityUserRole<int>>().HasData(
+            new IdentityUserRole<int> { UserId = 1, RoleId = 1 },
+            new IdentityUserRole<int> { UserId = 2, RoleId = 4 },
+            new IdentityUserRole<int> { UserId = 3, RoleId = 4 }
+        );
+    }
+    private void SeedMiscData(ModelBuilder builder)
     {
         builder.Entity<Ticket>().HasData(
                 new Ticket { ID = 1, IssueKey = "BSC-1", ProjectID = 1, ComponentID = 1, Title = "Seed Ticket 1", Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", StatusID = 1, CreatorID = "X001", CreatedDate = DateTime.Now, LastUpdatedDate = DateTime.Now },

@@ -25,13 +25,13 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatorRef.UserName)
+                Creator
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.StatusRef.StatusName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AssigneeRef.UserName)
+                Assignee
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreatedDate)
@@ -42,46 +42,48 @@
             <th>
                 @Html.DisplayNameFor(model => model.ResolvedDate)
             </th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
     @foreach (var item in Model) 
     {
         <tr>
-            <th>
-                @Html.DisplayFor(model => item.IssueKey)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.ProjectRef.ProjectKey)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.ComponentRef.ComponentName)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.Title)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.CreatorRef.UserName)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.StatusRef.StatusName)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.AssigneeRef.UserName)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.LastUpdatedDate)
-            </th>
-            <th>
-                @Html.DisplayFor(model => item.ResolvedDate)
-            </th>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-action="Details" asp-route-issueKey="@item.IssueKey">@Html.DisplayFor(model => item.IssueKey)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ProjectRef.ProjectKey)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ComponentRef.ComponentName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatorRef.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.StatusRef.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.AssigneeRef.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.LastUpdatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ResolvedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-issueKey="@item.IssueKey">Edit</a> |
+                <a asp-action="Delete" asp-route-issueKey="@item.IssueKey">Delete</a>
             </td>
         </tr>
     }

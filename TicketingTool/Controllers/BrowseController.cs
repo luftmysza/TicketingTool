@@ -7,9 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TicketingTool.Data;
 using TicketingTool.Models;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace TicketingTool.Controllers
 {
+    [Authorize]
+    [Route("browse")]
     public class BrowseController : Controller
     {
         private readonly ApplicationDBContext _context;
@@ -20,23 +24,37 @@ namespace TicketingTool.Controllers
         }
 
         // GET: Tickets
+        [HttpGet("")]
         public async Task<IActionResult> Index()
         {
-            List<Ticket> applicationDBContext =  await _context.Ticket.ToListAsync();
+            List<Ticket> applicationDBContext =  
+                await _context.Ticket
+                    .Include(t => t.ProjectRef)
+                    .Include(t => t.StatusRef)
+                    .Include(t => t.ComponentRef)
+                    .Include(t => t.AssigneeRef)
+                    .Include(t => t.CreatorRef)
+                    .ToListAsync();
 
             return View(applicationDBContext);
         }
 
         // GET: Tickets/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet("Details/{issueKey?}")]
+        public async Task<IActionResult> Details(string issueKey)
         {
-            if (id == null)
+            if (issueKey == null)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket
-                .FirstOrDefaultAsync(x => x.ID == id);
+            Ticket? ticket = await _context.Ticket
+                .Include(t => t.ProjectRef)
+                .Include(t => t.StatusRef)
+                .Include(t => t.ComponentRef)
+                .Include(t => t.AssigneeRef)
+                .Include(t => t.CreatorRef)
+                .FirstOrDefaultAsync(x => x.IssueKey == issueKey);
             if (ticket == null)
             {
                 return NotFound();
@@ -72,14 +90,23 @@ namespace TicketingTool.Controllers
         }
 
         // GET: Tickets/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet("Edit/{issueKey}")]
+        public async Task<IActionResult> Edit(string issueKey)
         {
-            if (id == null)
+            if (issueKey == null)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Ticket.FindAsync(id);
+            var ticket = 
+                await _context.Ticket
+
+                    .Include(t => t.StatusRef)
+                    .Include(t => t.ComponentRef)
+                    .Include(t => t.AssigneeRef)
+                    .Include(t => t.CreatorRef)
+                    .FirstOrDefaultAsync(x => x.IssueKey == issueKey);
+
             if (ticket == null)
             {
                 return NotFound();
@@ -127,6 +154,7 @@ namespace TicketingTool.Controllers
         }
 
         // GET: Tickets/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -149,6 +177,7 @@ namespace TicketingTool.Controllers
         // POST: Tickets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var ticket = await _context.Ticket.FindAsync(id);

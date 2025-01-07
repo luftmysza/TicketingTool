@@ -9,6 +9,7 @@ namespace TicketingTool.Models
         public int ID { get; set; }
 
         [Required]
+        [Display(Name = "Component")]
         public string ComponentName { get; set; }
     }
 }

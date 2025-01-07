@@ -8,6 +8,7 @@ namespace TicketingTool.Models
         [Required]
         public int ID { get; set; }
         [Required]
+        [Display(Name = "Status")]
         public string StatusName { get; set; }
     }
 }

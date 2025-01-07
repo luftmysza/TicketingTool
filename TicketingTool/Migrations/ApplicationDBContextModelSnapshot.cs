@@ -27,8 +27,8 @@ namespace TicketingTool.Migrations
                     b.Property<int>("ProjectsID")
                         .HasColumnType("int");
 
-                    b.Property<string>("UsersId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
 
                     b.HasKey("ProjectsID", "UsersId");
 
@@ -37,10 +37,13 @@ namespace TicketingTool.Migrations
                     b.ToTable("ApplicationUserProject");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -62,9 +65,35 @@ namespace TicketingTool.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Project Manager",
+                            NormalizedName = "MANAGER"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "User",
+                            NormalizedName = "USER"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Technical User",
+                            NormalizedName = "TECH"
+                        });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -78,9 +107,8 @@ namespace TicketingTool.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -89,7 +117,7 @@ namespace TicketingTool.Migrations
                     b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,9 +131,8 @@ namespace TicketingTool.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -114,7 +141,7 @@ namespace TicketingTool.Migrations
                     b.ToTable("AspNetUserClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
@@ -127,9 +154,8 @@ namespace TicketingTool.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -138,25 +164,42 @@ namespace TicketingTool.Migrations
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            RoleId = 4
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            RoleId = 4
+                        });
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
@@ -176,8 +219,11 @@ namespace TicketingTool.Migrations
 
             modelBuilder.Entity("TicketingTool.Areas.Identity.Data.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -199,6 +245,9 @@ namespace TicketingTool.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -217,6 +266,9 @@ namespace TicketingTool.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -242,16 +294,51 @@ namespace TicketingTool.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "17e5d838-7a22-47a5-bb97-3832c3de5934",
+                            ConcurrencyStamp = "d7de44f6-34db-4b0e-a6ed-048a00cc1bef",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
+                            Name = "Admin",
                             NormalizedUserName = "X001",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE5TN6ejW4HqoBHt3bBQK94O2M3+OhuzcsnfXXNdVAD1A/TLGR6sFY4EXYcMOzz0zA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9a1190d0-a4b5-42f7-a529-d22243fd6358",
+                            SecurityStamp = "b57cf767-f75e-485e-a6d3-b807918dc29b",
+                            Surname = "User",
                             TwoFactorEnabled = false,
                             UserName = "X001"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c0270ec9-c69b-4fe0-aa5c-7261b44f8782",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Ticket",
+                            NormalizedUserName = "TECH01",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHy4MWpQRoIXG+jXqrMzlYUcNi6nV0nkuTcJvdI87bi/EbkQg83mANLt69b9TjBIHw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "733783ae-88c2-41bb-a5b4-7110c6a18d0f",
+                            Surname = "Creator",
+                            TwoFactorEnabled = false,
+                            UserName = "TECH01"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "788b2601-2a90-422f-a354-23c997cb99d1",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Job",
+                            NormalizedUserName = "TECH02",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBqZjFd3rs/0BY16tbCEFDf/HziB3oFUdOlWc/QGx1agOaQfISRD1cFjLC71ZgdIDg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2b76c678-d805-4725-b6d3-71257a03c974",
+                            Surname = "User",
+                            TwoFactorEnabled = false,
+                            UserName = "TECH02"
                         });
                 });
 
@@ -545,11 +632,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 1,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 342, DateTimeKind.Local).AddTicks(2703),
+                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 335, DateTimeKind.Local).AddTicks(3359),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-1",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8255),
+                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9648),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 1"
@@ -558,11 +645,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 2,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8454),
+                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9857),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-2",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8459),
+                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9861),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 2"
@@ -571,11 +658,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 3,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8462),
+                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9864),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-3",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8463),
+                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9865),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 3"
@@ -584,11 +671,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 4,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8490),
+                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9927),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-4",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8492),
+                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9928),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 4"
@@ -597,11 +684,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 5,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8505),
+                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9930),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-5",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 8, 31, 5, 343, DateTimeKind.Local).AddTicks(8507),
+                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9932),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 5"
@@ -619,9 +706,8 @@ namespace TicketingTool.Migrations
                     b.Property<DateTime>("ChangedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ChangedByRefId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ChangedByRefId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ChangedFieldID")
                         .HasColumnType("int");
@@ -693,16 +779,16 @@ namespace TicketingTool.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.HasOne("TicketingTool.Areas.Identity.Data.ApplicationUser", null)
                         .WithMany()
@@ -711,7 +797,7 @@ namespace TicketingTool.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.HasOne("TicketingTool.Areas.Identity.Data.ApplicationUser", null)
                         .WithMany()
@@ -720,9 +806,9 @@ namespace TicketingTool.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -735,7 +821,7 @@ namespace TicketingTool.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
                     b.HasOne("TicketingTool.Areas.Identity.Data.ApplicationUser", null)
                         .WithMany()
