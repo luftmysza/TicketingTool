@@ -383,10 +383,10 @@ C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\staticwebass
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.TicketingTool.props
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.TicketingTool.props
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\staticwebassets.pack.json
-C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\Ticketin.F973DCB2.Up2Date
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\TicketingTool.dll
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\refint\TicketingTool.dll
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\TicketingTool.pdb
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\TicketingTool.genruntimeconfig.cache
 C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\ref\TicketingTool.dll
+C:\Users\drboo\Desktop\TicketingTool\TicketingTool\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

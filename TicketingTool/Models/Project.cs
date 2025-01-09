@@ -17,9 +17,7 @@ namespace TicketingTool.Models
         [Required]
         [Display(Name = "Project")]
         public string ProjectName { get; set; }
-
-        public ICollection<ApplicationUser> PMs { get; set; } = new List<ApplicationUser>();
-        public ICollection<ApplicationUser> Users { get; set; } = new List<ApplicationUser>();
+        public ICollection<ProjectUserRole> UserRoles { get; set; } = new List<ProjectUserRole>();
         public ICollection<Component> Components { get; set; } = new List<Component>();
         public ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
     }

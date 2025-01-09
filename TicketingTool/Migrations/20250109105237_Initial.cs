@@ -192,37 +192,13 @@ namespace TicketingTool.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ApplicationUserProject",
-                columns: table => new
-                {
-                    ProjectsID = table.Column<int>(type: "int", nullable: false),
-                    UsersId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ApplicationUserProject", x => new { x.ProjectsID, x.UsersId });
-                    table.ForeignKey(
-                        name: "FK_ApplicationUserProject_AspNetUsers_UsersId",
-                        column: x => x.UsersId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ApplicationUserProject_Project_ProjectsID",
-                        column: x => x.ProjectsID,
-                        principalTable: "Project",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Component",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ComponentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProjectID = table.Column<int>(type: "int", nullable: true)
+                    ProjectID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -231,7 +207,33 @@ namespace TicketingTool.Migrations
                         name: "FK_Component_Project_ProjectID",
                         column: x => x.ProjectID,
                         principalTable: "Project",
-                        principalColumn: "ID");
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProjectUserRole",
+                columns: table => new
+                {
+                    ProjectId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(256)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectUserRole", x => new { x.ProjectId, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_ProjectUserRole_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "UserName",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProjectUserRole_Project_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Project",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -248,30 +250,6 @@ namespace TicketingTool.Migrations
                     table.PrimaryKey("PK_TicketField", x => x.ID);
                     table.ForeignKey(
                         name: "FK_TicketField_Project_ProjectID",
-                        column: x => x.ProjectID,
-                        principalTable: "Project",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Component2Project",
-                columns: table => new
-                {
-                    ComponentID = table.Column<int>(type: "int", nullable: false),
-                    ProjectID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Component2Project", x => new { x.ComponentID, x.ProjectID });
-                    table.ForeignKey(
-                        name: "FK_Component2Project_Component_ComponentID",
-                        column: x => x.ComponentID,
-                        principalTable: "Component",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Component2Project_Project_ProjectID",
                         column: x => x.ProjectID,
                         principalTable: "Project",
                         principalColumn: "ID",
@@ -385,27 +363,9 @@ namespace TicketingTool.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Surname", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, 0, "d7de44f6-34db-4b0e-a6ed-048a00cc1bef", null, false, false, null, "Admin", null, "X001", "AQAAAAIAAYagAAAAEE5TN6ejW4HqoBHt3bBQK94O2M3+OhuzcsnfXXNdVAD1A/TLGR6sFY4EXYcMOzz0zA==", null, false, "b57cf767-f75e-485e-a6d3-b807918dc29b", "User", false, "X001" },
-                    { 2, 0, "c0270ec9-c69b-4fe0-aa5c-7261b44f8782", null, false, false, null, "Ticket", null, "TECH01", "AQAAAAIAAYagAAAAEHy4MWpQRoIXG+jXqrMzlYUcNi6nV0nkuTcJvdI87bi/EbkQg83mANLt69b9TjBIHw==", null, false, "733783ae-88c2-41bb-a5b4-7110c6a18d0f", "Creator", false, "TECH01" },
-                    { 3, 0, "788b2601-2a90-422f-a354-23c997cb99d1", null, false, false, null, "Job", null, "TECH02", "AQAAAAIAAYagAAAAEBqZjFd3rs/0BY16tbCEFDf/HziB3oFUdOlWc/QGx1agOaQfISRD1cFjLC71ZgdIDg==", null, false, "2b76c678-d805-4725-b6d3-71257a03c974", "User", false, "TECH02" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Component",
-                columns: new[] { "ID", "ComponentName", "ProjectID" },
-                values: new object[,]
-                {
-                    { 1, "Unidentified", null },
-                    { 2, "User Interface Module", null },
-                    { 3, "Database Management", null },
-                    { 4, "API Gateway", null },
-                    { 5, "Logging Service", null },
-                    { 6, "Notification System", null },
-                    { 7, "Payment Processor", null },
-                    { 8, "Analytics Engine", null },
-                    { 9, "Reporting Tool", null },
-                    { 10, "Cache Management", null },
-                    { 11, "Authentication Service", null }
+                    { 1, 0, "83f1990f-706b-450e-97d9-f435bbfa6db5", null, false, false, null, "Admin", null, "X001", "AQAAAAIAAYagAAAAEDQaCLjmN/EbSI6Ke12SFFf8P6okJOFLdfUP5fsHOi2p1wsh6QMXvIm82GflSWGnIQ==", null, false, "7e9d9a66-cda5-4c16-93f9-e5c53b3e32ea", "User", false, "X001" },
+                    { 2, 0, "661a8a38-f6e6-43a8-b26d-405271b669c7", null, false, false, null, "Ticket", null, "TECH01", "AQAAAAIAAYagAAAAEM5eY6hL3Gn2X19kX5KTG8Z5XmyB/4ogqGQjTmpyYBzeMRcfzohmWUpYXU1DYVNgZA==", null, false, "06a8c296-c5e1-4eb7-8d90-493e673fb3f9", "Creator", false, "TECH01" },
+                    { 3, 0, "616df202-127b-4334-b80b-b8fb0f128ba6", null, false, false, null, "Job", null, "TECH02", "AQAAAAIAAYagAAAAEHwatyo2WvAsPYJw5a0bGUFd/jkLuSGemj6REOGJmANnXdGnwDYbqLum5s5AtTnHcQ==", null, false, "1302effe-2072-41e2-864f-88b614f6d83c", "User", false, "TECH02" }
                 });
 
             migrationBuilder.InsertData(
@@ -435,21 +395,21 @@ namespace TicketingTool.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Component2Project",
-                columns: new[] { "ComponentID", "ProjectID" },
+                table: "Component",
+                columns: new[] { "ID", "ComponentName", "ProjectID" },
                 values: new object[,]
                 {
-                    { 1, 1 },
-                    { 2, 1 },
-                    { 3, 1 },
-                    { 4, 1 },
-                    { 5, 1 },
-                    { 6, 1 },
-                    { 7, 1 },
-                    { 8, 1 },
-                    { 9, 1 },
-                    { 10, 1 },
-                    { 11, 1 }
+                    { 1, "Unidentified", 1 },
+                    { 2, "User Interface Module", 1 },
+                    { 3, "Database Management", 1 },
+                    { 4, "API Gateway", 1 },
+                    { 5, "Logging Service", 1 },
+                    { 6, "Notification System", 1 },
+                    { 7, "Payment Processor", 1 },
+                    { 8, "Analytics Engine", 1 },
+                    { 9, "Reporting Tool", 1 },
+                    { 10, "Cache Management", 1 },
+                    { 11, "Authentication Service", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -457,17 +417,12 @@ namespace TicketingTool.Migrations
                 columns: new[] { "ID", "AssigneeID", "ComponentID", "CreatedDate", "CreatorID", "Description", "IssueKey", "LastUpdatedDate", "ProjectID", "ResolvedDate", "StatusID", "Title" },
                 values: new object[,]
                 {
-                    { 1, null, 1, new DateTime(2025, 1, 5, 20, 57, 6, 335, DateTimeKind.Local).AddTicks(3359), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-1", new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9648), 1, null, 1, "Seed Ticket 1" },
-                    { 2, null, 1, new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9857), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-2", new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9861), 1, null, 1, "Seed Ticket 2" },
-                    { 3, null, 1, new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9864), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-3", new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9865), 1, null, 1, "Seed Ticket 3" },
-                    { 4, null, 1, new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9927), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-4", new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9928), 1, null, 1, "Seed Ticket 4" },
-                    { 5, null, 1, new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9930), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-5", new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9932), 1, null, 1, "Seed Ticket 5" }
+                    { 1, null, 1, new DateTime(2025, 1, 9, 11, 52, 36, 882, DateTimeKind.Local).AddTicks(8462), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-1", new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4377), 1, null, 1, "Seed Ticket 1" },
+                    { 2, null, 1, new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4603), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-2", new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4607), 1, null, 1, "Seed Ticket 2" },
+                    { 3, null, 1, new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4610), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-3", new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4612), 1, null, 1, "Seed Ticket 3" },
+                    { 4, null, 1, new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4614), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-4", new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4615), 1, null, 1, "Seed Ticket 4" },
+                    { 5, null, 1, new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4617), "X001", "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.", "BSC-5", new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4618), 1, null, 1, "Seed Ticket 5" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ApplicationUserProject_UsersId",
-                table: "ApplicationUserProject",
-                column: "UsersId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -514,9 +469,9 @@ namespace TicketingTool.Migrations
                 column: "ProjectID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Component2Project_ProjectID",
-                table: "Component2Project",
-                column: "ProjectID");
+                name: "IX_ProjectUserRole_UserId",
+                table: "ProjectUserRole",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ticket_AssigneeID",
@@ -574,9 +529,6 @@ namespace TicketingTool.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ApplicationUserProject");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -592,7 +544,7 @@ namespace TicketingTool.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Component2Project");
+                name: "ProjectUserRole");
 
             migrationBuilder.DropTable(
                 name: "TicketChange");

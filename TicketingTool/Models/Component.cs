@@ -11,5 +11,9 @@ namespace TicketingTool.Models
         [Required]
         [Display(Name = "Component")]
         public string ComponentName { get; set; }
+
+        [Required]
+        public int ProjectID { get; set; }
+        public Project ProjectRef { get; set; }
     }
 }

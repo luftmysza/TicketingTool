@@ -13,14 +13,13 @@ public class ApplicationUser : IdentityUser<int>
 {
     public string? Name { get; set; }
     public string? Surname { get; set; }
-
+    [Required]
     [Display(Name = "Username")]
     public override string UserName { get; set; }
 
-    public ICollection<Project> Projects { get; set; } = new List<Project>();
+    public ICollection<ProjectUserRole> Projects { get; set; } = new List<ProjectUserRole>();
 
     public ICollection<Ticket> CreatedTickets { get; set; } = new List<Ticket>();
 
     public ICollection<Ticket> AssignedTickets { get; set; } = new List<Ticket>();
 }
-

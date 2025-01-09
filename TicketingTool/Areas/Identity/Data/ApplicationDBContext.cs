@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Reflection.Emit;
 using TicketingTool.Areas.Identity.Data;
 using TicketingTool.Models;
@@ -34,21 +35,23 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
     private void ConfigureEntities(ModelBuilder builder)
     {
         //ApplicationUser
-        builder.Entity<ApplicationUser>()
-            .HasMany(au => au.CreatedTickets)
-            .WithOne(t => t.CreatorRef)
-            .HasForeignKey(t => t.CreatorID)
-            .OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<ApplicationUser>(entity =>
+            {
+                entity
+                    .HasMany(au => au.CreatedTickets)
+                    .WithOne(t => t.CreatorRef)
+                    .HasForeignKey(t => t.CreatorID)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Entity<ApplicationUser>()
-            .HasMany(au => au.AssignedTickets)
-            .WithOne(t => t.AssigneeRef)
-            .HasForeignKey(t => t.AssigneeID)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        //Project
-
+                entity
+                    .HasMany(au => au.AssignedTickets)
+                    .WithOne(t => t.AssigneeRef)
+                    .HasForeignKey(t => t.AssigneeID)
+                    .OnDelete(DeleteBehavior.Restrict);
+            }
+        );
             
+        //Project
 
 
         //Ticket Change
@@ -59,53 +62,71 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
             .OnDelete(DeleteBehavior.Restrict);
 
         //Ticket
-        builder.Entity<Ticket>()
-            .HasIndex(t => t.IssueKey)
-            .IsUnique();
-        
-        builder.Entity<Ticket>()
-            .HasOne(t => t.ProjectRef)
-            .WithMany(p => p.Tickets)
-            .HasForeignKey(t => t.ProjectID)
-            .OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<Ticket>(entity =>
+            {
+                entity
+                    .HasIndex(t => t.IssueKey)
+                    .IsUnique();
 
-        builder.Entity<Ticket>()
-            .HasOne(t => t.CreatorRef)
-            .WithMany(au => au.CreatedTickets)
-            .HasForeignKey(t => t.CreatorID)
-            .HasPrincipalKey(au => au.UserName)
-            .OnDelete(DeleteBehavior.Restrict);
+                entity
+                    .HasOne(t => t.ProjectRef)
+                    .WithMany(p => p.Tickets)
+                    .HasForeignKey(t => t.ProjectID)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Entity<Ticket>()
-            .HasOne(t => t.AssigneeRef)
-            .WithMany(au => au.AssignedTickets)
-            .HasForeignKey(t => t.AssigneeID)
-            .HasPrincipalKey(au => au.UserName)
-            .OnDelete(DeleteBehavior.Restrict);
+                entity
+                    .HasOne(t => t.CreatorRef)
+                    .WithMany(au => au.CreatedTickets)
+                    .HasForeignKey(t => t.CreatorID)
+                    .HasPrincipalKey(au => au.UserName)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Entity<Ticket>()
-            .HasMany(t => t.Changes)
-            .WithOne(au => au.TicketRef)
-            .OnDelete(DeleteBehavior.Restrict);
+                entity
+                    .HasOne(t => t.AssigneeRef)
+                    .WithMany(au => au.AssignedTickets)
+                    .HasForeignKey(t => t.AssigneeID)
+                    .HasPrincipalKey(au => au.UserName)
+                    .OnDelete(DeleteBehavior.Restrict);
 
-        //Component2Project
-        builder.Entity<Component2Project>().
-            HasKey(t => new { t.ComponentID, t.ProjectID });
+                entity
+                    .HasMany(t => t.Changes)
+                    .WithOne(au => au.TicketRef)
+                    .OnDelete(DeleteBehavior.Restrict);
+            }
+        );            
+
+        //ProjectUserRole
+        builder.Entity<ProjectUserRole>(entity =>
+            {
+                entity.HasKey(pur => new { pur.ProjectId, pur.UserId });
+
+                entity
+                    .HasOne(pur => pur.ProjectRef)
+                    .WithMany(p => p.UserRoles)
+                    .HasForeignKey(pur => pur.ProjectId);
+
+                entity
+                    .HasOne(pur => pur.UserIdRef)
+                    .WithMany(au => au.Projects)
+                    .HasForeignKey(pur => pur.UserId)
+                    .HasPrincipalKey(au => au.UserName);
+            }   
+        );
+
+
     }
     private void SeedUserData(ModelBuilder builder)
     {
         builder.Entity<IdentityRole<int>>().HasData(
-          new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
-          new IdentityRole<int> { Id = 2, Name = "Project Manager", NormalizedName = "MANAGER" },
-          new IdentityRole<int> { Id = 3, Name = "User", NormalizedName = "USER" },
-          new IdentityRole<int> { Id = 4, Name = "Technical User", NormalizedName = "TECH" }
-          
+            new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
+            new IdentityRole<int> { Id = 2, Name = "Project Manager", NormalizedName = "MANAGER" },
+            new IdentityRole<int> { Id = 3, Name = "User", NormalizedName = "USER" },
+            new IdentityRole<int> { Id = 4, Name = "Technical User", NormalizedName = "TECH" }
         );
 
         var hasher = new PasswordHasher<ApplicationUser>();
 
         // Seed ApplicationUser first
-
         var adminUser = new ApplicationUser
         {
             Id = 1,
@@ -166,32 +187,21 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
         builder.Entity<Project>().HasData(
                 new Project { ID = 1, ProjectKey = "BSC", Counter = 5, ProjectName = "Basic Project" }
             );
+
         builder.Entity<Component>().HasData(
-                new Component { ID = 1, ComponentName = "Unidentified" },
-                new Component { ID = 2, ComponentName = "User Interface Module" },
-                new Component { ID = 3, ComponentName = "Database Management" },
-                new Component { ID = 4, ComponentName = "API Gateway" },
-                new Component { ID = 5, ComponentName = "Logging Service" },
-                new Component { ID = 6, ComponentName = "Notification System" },
-                new Component { ID = 7, ComponentName = "Payment Processor" },
-                new Component { ID = 8, ComponentName = "Analytics Engine" },
-                new Component { ID = 9, ComponentName = "Reporting Tool" },
-                new Component { ID = 10, ComponentName = "Cache Management" },
-                new Component { ID = 11, ComponentName = "Authentication Service" }
+                new Component { ID = 1, ComponentName = "Unidentified", ProjectID = 1},
+                new Component { ID = 2, ComponentName = "User Interface Module" , ProjectID = 1},
+                new Component { ID = 3, ComponentName = "Database Management" , ProjectID = 1},
+                new Component { ID = 4, ComponentName = "API Gateway" , ProjectID = 1},
+                new Component { ID = 5, ComponentName = "Logging Service" , ProjectID = 1},
+                new Component { ID = 6, ComponentName = "Notification System" , ProjectID = 1},
+                new Component { ID = 7, ComponentName = "Payment Processor" , ProjectID = 1},
+                new Component { ID = 8, ComponentName = "Analytics Engine" , ProjectID = 1},
+                new Component { ID = 9, ComponentName = "Reporting Tool" , ProjectID = 1},
+                new Component { ID = 10, ComponentName = "Cache Management" , ProjectID = 1},
+                new Component { ID = 11, ComponentName = "Authentication Service" , ProjectID = 1}
             );
-        builder.Entity<Component2Project>().HasData(
-                new Component2Project { ComponentID = 1, ProjectID = 1 },
-                new Component2Project { ComponentID = 2, ProjectID = 1 },
-                new Component2Project { ComponentID = 3, ProjectID = 1 },
-                new Component2Project { ComponentID = 4, ProjectID = 1 },
-                new Component2Project { ComponentID = 5, ProjectID = 1 },
-                new Component2Project { ComponentID = 6, ProjectID = 1 },
-                new Component2Project { ComponentID = 7, ProjectID = 1 },
-                new Component2Project { ComponentID = 8, ProjectID = 1 },
-                new Component2Project { ComponentID = 9, ProjectID = 1 },
-                new Component2Project { ComponentID = 10, ProjectID = 1 },
-                new Component2Project { ComponentID = 11, ProjectID = 1 }
-    );
+
         builder.Entity<Status>().HasData(
                 new Status { ID = 1, StatusName = "Open" },
                 new Status { ID = 2, StatusName = "In Progress" },

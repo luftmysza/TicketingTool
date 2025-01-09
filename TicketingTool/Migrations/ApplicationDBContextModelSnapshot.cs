@@ -22,21 +22,6 @@ namespace TicketingTool.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ApplicationUserProject", b =>
-                {
-                    b.Property<int>("ProjectsID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProjectsID", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("ApplicationUserProject");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -296,14 +281,14 @@ namespace TicketingTool.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d7de44f6-34db-4b0e-a6ed-048a00cc1bef",
+                            ConcurrencyStamp = "83f1990f-706b-450e-97d9-f435bbfa6db5",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Admin",
                             NormalizedUserName = "X001",
-                            PasswordHash = "AQAAAAIAAYagAAAAEE5TN6ejW4HqoBHt3bBQK94O2M3+OhuzcsnfXXNdVAD1A/TLGR6sFY4EXYcMOzz0zA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDQaCLjmN/EbSI6Ke12SFFf8P6okJOFLdfUP5fsHOi2p1wsh6QMXvIm82GflSWGnIQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b57cf767-f75e-485e-a6d3-b807918dc29b",
+                            SecurityStamp = "7e9d9a66-cda5-4c16-93f9-e5c53b3e32ea",
                             Surname = "User",
                             TwoFactorEnabled = false,
                             UserName = "X001"
@@ -312,14 +297,14 @@ namespace TicketingTool.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c0270ec9-c69b-4fe0-aa5c-7261b44f8782",
+                            ConcurrencyStamp = "661a8a38-f6e6-43a8-b26d-405271b669c7",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Ticket",
                             NormalizedUserName = "TECH01",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHy4MWpQRoIXG+jXqrMzlYUcNi6nV0nkuTcJvdI87bi/EbkQg83mANLt69b9TjBIHw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM5eY6hL3Gn2X19kX5KTG8Z5XmyB/4ogqGQjTmpyYBzeMRcfzohmWUpYXU1DYVNgZA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "733783ae-88c2-41bb-a5b4-7110c6a18d0f",
+                            SecurityStamp = "06a8c296-c5e1-4eb7-8d90-493e673fb3f9",
                             Surname = "Creator",
                             TwoFactorEnabled = false,
                             UserName = "TECH01"
@@ -328,18 +313,37 @@ namespace TicketingTool.Migrations
                         {
                             Id = 3,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "788b2601-2a90-422f-a354-23c997cb99d1",
+                            ConcurrencyStamp = "616df202-127b-4334-b80b-b8fb0f128ba6",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Job",
                             NormalizedUserName = "TECH02",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBqZjFd3rs/0BY16tbCEFDf/HziB3oFUdOlWc/QGx1agOaQfISRD1cFjLC71ZgdIDg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHwatyo2WvAsPYJw5a0bGUFd/jkLuSGemj6REOGJmANnXdGnwDYbqLum5s5AtTnHcQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2b76c678-d805-4725-b6d3-71257a03c974",
+                            SecurityStamp = "1302effe-2072-41e2-864f-88b614f6d83c",
                             Surname = "User",
                             TwoFactorEnabled = false,
                             UserName = "TECH02"
                         });
+                });
+
+            modelBuilder.Entity("TicketingTool.Areas.Identity.Data.ProjectUserRole", b =>
+                {
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ProjectId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProjectUserRole");
                 });
 
             modelBuilder.Entity("TicketingTool.Models.Component", b =>
@@ -354,7 +358,7 @@ namespace TicketingTool.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProjectID")
+                    b.Property<int>("ProjectID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -367,128 +371,67 @@ namespace TicketingTool.Migrations
                         new
                         {
                             ID = 1,
-                            ComponentName = "Unidentified"
+                            ComponentName = "Unidentified",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 2,
-                            ComponentName = "User Interface Module"
+                            ComponentName = "User Interface Module",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 3,
-                            ComponentName = "Database Management"
+                            ComponentName = "Database Management",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 4,
-                            ComponentName = "API Gateway"
+                            ComponentName = "API Gateway",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 5,
-                            ComponentName = "Logging Service"
+                            ComponentName = "Logging Service",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 6,
-                            ComponentName = "Notification System"
+                            ComponentName = "Notification System",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 7,
-                            ComponentName = "Payment Processor"
+                            ComponentName = "Payment Processor",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 8,
-                            ComponentName = "Analytics Engine"
+                            ComponentName = "Analytics Engine",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 9,
-                            ComponentName = "Reporting Tool"
+                            ComponentName = "Reporting Tool",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 10,
-                            ComponentName = "Cache Management"
+                            ComponentName = "Cache Management",
+                            ProjectID = 1
                         },
                         new
                         {
                             ID = 11,
-                            ComponentName = "Authentication Service"
-                        });
-                });
-
-            modelBuilder.Entity("TicketingTool.Models.Component2Project", b =>
-                {
-                    b.Property<int>("ComponentID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProjectID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ComponentID", "ProjectID");
-
-                    b.HasIndex("ProjectID");
-
-                    b.ToTable("Component2Project");
-
-                    b.HasData(
-                        new
-                        {
-                            ComponentID = 1,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 2,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 3,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 4,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 5,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 6,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 7,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 8,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 9,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 10,
-                            ProjectID = 1
-                        },
-                        new
-                        {
-                            ComponentID = 11,
+                            ComponentName = "Authentication Service",
                             ProjectID = 1
                         });
                 });
@@ -632,11 +575,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 1,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 335, DateTimeKind.Local).AddTicks(3359),
+                            CreatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 882, DateTimeKind.Local).AddTicks(8462),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-1",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9648),
+                            LastUpdatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4377),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 1"
@@ -645,11 +588,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 2,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9857),
+                            CreatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4603),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-2",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9861),
+                            LastUpdatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4607),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 2"
@@ -658,11 +601,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 3,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9864),
+                            CreatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4610),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-3",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9865),
+                            LastUpdatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4612),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 3"
@@ -671,11 +614,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 4,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9927),
+                            CreatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4614),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-4",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9928),
+                            LastUpdatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4615),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 4"
@@ -684,11 +627,11 @@ namespace TicketingTool.Migrations
                         {
                             ID = 5,
                             ComponentID = 1,
-                            CreatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9930),
+                            CreatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4617),
                             CreatorID = "X001",
                             Description = "Lorem ipsum odor amet, consectetuer adipiscing elit. Curabitur duis non dis ligula potenti praesent aenean. Mus etiam ridiculus viverra sed sapien nascetur, turpis tempor sollicitudin. Aptent enim luctus dui; urna per id. Sodales auctor vel accumsan dictumst placerat feugiat lectus curabitur? Quam risus lorem vitae commodo porttitor orci ultrices.",
                             IssueKey = "BSC-5",
-                            LastUpdatedDate = new DateTime(2025, 1, 5, 20, 57, 6, 336, DateTimeKind.Local).AddTicks(9932),
+                            LastUpdatedDate = new DateTime(2025, 1, 9, 11, 52, 36, 884, DateTimeKind.Local).AddTicks(4618),
                             ProjectID = 1,
                             StatusID = 1,
                             Title = "Seed Ticket 5"
@@ -764,21 +707,6 @@ namespace TicketingTool.Migrations
                     b.ToTable("TicketField");
                 });
 
-            modelBuilder.Entity("ApplicationUserProject", b =>
-                {
-                    b.HasOne("TicketingTool.Models.Project", null)
-                        .WithMany()
-                        .HasForeignKey("ProjectsID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TicketingTool.Areas.Identity.Data.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
@@ -830,28 +758,33 @@ namespace TicketingTool.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TicketingTool.Models.Component", b =>
+            modelBuilder.Entity("TicketingTool.Areas.Identity.Data.ProjectUserRole", b =>
                 {
-                    b.HasOne("TicketingTool.Models.Project", null)
-                        .WithMany("Components")
-                        .HasForeignKey("ProjectID");
-                });
-
-            modelBuilder.Entity("TicketingTool.Models.Component2Project", b =>
-                {
-                    b.HasOne("TicketingTool.Models.Component", "ComponentRef")
-                        .WithMany()
-                        .HasForeignKey("ComponentID")
+                    b.HasOne("TicketingTool.Models.Project", "ProjectRef")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("TicketingTool.Areas.Identity.Data.ApplicationUser", "UserIdRef")
+                        .WithMany("Projects")
+                        .HasForeignKey("UserId")
+                        .HasPrincipalKey("UserName")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProjectRef");
+
+                    b.Navigation("UserIdRef");
+                });
+
+            modelBuilder.Entity("TicketingTool.Models.Component", b =>
+                {
                     b.HasOne("TicketingTool.Models.Project", "ProjectRef")
-                        .WithMany()
+                        .WithMany("Components")
                         .HasForeignKey("ProjectID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ComponentRef");
 
                     b.Navigation("ProjectRef");
                 });
@@ -943,6 +876,8 @@ namespace TicketingTool.Migrations
                     b.Navigation("AssignedTickets");
 
                     b.Navigation("CreatedTickets");
+
+                    b.Navigation("Projects");
                 });
 
             modelBuilder.Entity("TicketingTool.Models.Project", b =>
@@ -950,6 +885,8 @@ namespace TicketingTool.Migrations
                     b.Navigation("Components");
 
                     b.Navigation("Tickets");
+
+                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("TicketingTool.Models.Ticket", b =>
