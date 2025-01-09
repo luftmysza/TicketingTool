@@ -1,92 +1,72 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using TicketingTool.Models;
+using TicketingTool.Areas.Identity.Data;
+using TicketingTool.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TicketingTool.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
-        // GET: AdminController
-        [Authorize(Roles = "Admin")]
-        public ActionResult Index()
+        private readonly ApplicationDBContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public AdminController(ApplicationDBContext context, UserManager<ApplicationUser> userManager)
         {
+            _context = context;
+            _userManager = userManager;
+        }
+
+        public IActionResult Index()
+        {
+            ViewBag.Projects = _context.Project.ToList();
+            ViewBag.Users = _userManager.Users.ToList();
             return View();
         }
 
-        // GET: AdminController/Details/5
-        [Authorize(Roles = "Admin")]
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: AdminController/Create
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AdminController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult CreateProject(string projectName, string projectKey)
         {
-            try
+            if (!string.IsNullOrWhiteSpace(projectName) && !string.IsNullOrWhiteSpace(projectKey))
             {
-                return RedirectToAction(nameof(Index));
+                var project = new Project
+                {
+                    ProjectName = projectName,
+                    ProjectKey = projectKey,
+                    Counter = 0
+                };
+                _context.Project.Add(project);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Project created successfully!";
             }
-            catch
+            else
             {
-                return View();
+                TempData["ErrorMessage"] = "Project name and key are required.";
             }
+            return RedirectToAction("Index");
         }
 
-        // GET: AdminController/Edit/5
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: AdminController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> AssignUserToProject(string UserName, int projectId, string role)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            var user = _userManager.Users.FirstOrDefault(u => u.UserName == UserName);
+            var project = _context.Project.FirstOrDefault(p => p.ID == projectId);
 
-        // GET: AdminController/Delete/5
-        [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+            if (user != null && project != null && !string.IsNullOrWhiteSpace(role))
+            {
+                var rule = new ProjectUserRole { UserId = UserName, ProjectId = projectId, RoleId = role };
+                await _context.ProjectUserRole.AddAsync(rule);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = $"User {user.UserName} assigned to project {project.ProjectName} as {role}.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Invalid user, project, or role.";
+            }
 
-        // POST: AdminController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

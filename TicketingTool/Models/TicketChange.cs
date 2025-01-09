@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TicketingTool.Areas.Identity.Data;
 namespace TicketingTool.Models
@@ -14,16 +15,20 @@ namespace TicketingTool.Models
         public Ticket TicketRef { get; set; }
         [Required]
         [ForeignKey(nameof(TicketField))]
-        public int ChangedFieldID {  get;set; }
-        public TicketField ChangedFieldRef { get; set; }
-        [Required]
-        public string OldValue { get; set; }
-        public string NewValue { get; set; } = string.Empty;
+        [DisplayName("Changed Field")]
+        public int ChangedFieldId {  get; set; }
+        public string ChangedFieldName { get; set; }
+        [DisplayName("Old Value")]
+        public string? OldValue { get; set; }
+        [DisplayName("New Value")]
+        public string? NewValue { get; set; }
         [Required]
         [ForeignKey(nameof(ApplicationUser))]
-        public string changedByID { get; set; }
+        [DisplayName("Changed By")]
+        public string ChangedBy { get; set; }
         public ApplicationUser ChangedByRef { get; set; }
         [Required]
+        [DisplayName("Changed At")]
         public DateTime ChangedAt { get; set; }
     }
 }

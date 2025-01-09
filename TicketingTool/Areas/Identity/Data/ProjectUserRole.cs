@@ -14,5 +14,7 @@ public class ProjectUserRole : IdentityUserRole<string>
     [Key]
     [Required]
     public override string UserId { get; set; }
-    public ApplicationUser UserIdRef { get; set; }
+    public ApplicationUser UserNameRef { get; set; }
+
+    //RoleId is inherited
 }

@@ -3,68 +3,108 @@
   "WorkspaceRootPath": "C:\\Users\\drboo\\Desktop\\TicketingTool\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\areas\\identity\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\areas\\identity\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Migrations\\20250109105237_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TicketingTool\\Migrations\\20250109105237_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\projects\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\projects\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\areas\\identity\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\areas\\identity\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\areas\\identity\\data\\projectuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\areas\\identity\\data\\projectuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\projects\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\projects\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\controllers\\projectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\browse\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\browse\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\models\\ticketchange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\models\\ticketchange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\areas\\identity\\data\\projectuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\areas\\identity\\data\\projectuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\browse\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\browse\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\browse\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\browse\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\controllers\\browsecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\controllers\\browsecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\models\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\models\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Migrations\\20250109201442_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TicketingTool\\Migrations\\20250109201442_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\models\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\models\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\todo.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\views\\browse\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\views\\browse\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\models\\ticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|c:\\users\\drboo\\desktop\\ticketingtool\\ticketingtool\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ADD1B75-B70D-4490-9416-AECB218A45E0}|TicketingTool\\TicketingTool.csproj|solutionrelative:ticketingtool\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -73,22 +113,9 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 186,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Ticket.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Ticket.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Models\\Ticket.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Ticket.cs",
-              "RelativeToolTip": "TicketingTool\\Models\\Ticket.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAswDcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:54:14.852Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
@@ -100,81 +127,41 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 214,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TicketChange.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\TicketChange.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Models\\TicketChange.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\TicketChange.cs",
+              "RelativeToolTip": "TicketingTool\\Models\\TicketChange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T11:41:32.699Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "20250109105237_Initial.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Migrations\\20250109105237_Initial.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Migrations\\20250109105237_Initial.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Migrations\\20250109105237_Initial.cs",
-              "RelativeToolTip": "TicketingTool\\Migrations\\20250109105237_Initial.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAzwCQAAAA9AAAAAAAAAA==",
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "TicketingTool\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAArwDQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:52:37.751Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProjectUserRole.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ProjectUserRole.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Data\\ProjectUserRole.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ProjectUserRole.cs",
-              "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Data\\ProjectUserRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:47:39.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Data\\ApplicationUser.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ApplicationUser.cs",
-              "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Data\\ApplicationUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T19:25:39.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Project.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Project.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Models\\Project.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Project.cs",
-              "RelativeToolTip": "TicketingTool\\Models\\Project.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T20:08:10.954Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "TicketingTool\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T20:01:33.038Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ToDo.txt",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\ToDo.txt",
-              "RelativeDocumentMoniker": "TicketingTool\\ToDo.txt",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\ToDo.txt",
-              "RelativeToolTip": "TicketingTool\\ToDo.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-01-05T20:42:40.244Z",
+              "WhenOpened": "2025-01-09T19:33:22.43Z",
               "EditorCaption": ""
             },
             {
@@ -185,9 +172,113 @@
               "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Data\\ApplicationDBContext.cs",
               "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ApplicationDBContext.cs",
               "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Data\\ApplicationDBContext.cs",
-              "ViewState": "AgIAAJ4AAAAAAAAAAAAswLoAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAAAOMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T19:09:08.603Z",
+              "WhenOpened": "2025-01-09T18:57:32.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Program.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Program.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Program.cs",
+              "RelativeToolTip": "TicketingTool\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T18:43:09.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Project.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Project.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Models\\Project.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Project.cs",
+              "RelativeToolTip": "TicketingTool\\Models\\Project.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T18:36:56.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Status.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Status.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Models\\Status.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Status.cs",
+              "RelativeToolTip": "TicketingTool\\Models\\Status.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T14:13:15.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Projects\\Details.cshtml",
+              "RelativeDocumentMoniker": "TicketingTool\\Views\\Projects\\Details.cshtml",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Projects\\Details.cshtml",
+              "RelativeToolTip": "TicketingTool\\Views\\Projects\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T19:54:06.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "TicketingTool\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "TicketingTool\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAADwvywAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T19:34:44.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Data\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ApplicationUser.cs",
+              "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Data\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T18:25:35.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProjectUserRole.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ProjectUserRole.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Data\\ProjectUserRole.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Data\\ProjectUserRole.cs",
+              "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Data\\ProjectUserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T18:38:17.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Browse\\Index.cshtml",
+              "RelativeDocumentMoniker": "TicketingTool\\Views\\Browse\\Index.cshtml",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Browse\\Index.cshtml",
+              "RelativeToolTip": "TicketingTool\\Views\\Browse\\Index.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFQAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T18:42:06.863Z",
               "EditorCaption": ""
             },
             {
@@ -198,103 +289,192 @@
               "RelativeDocumentMoniker": "TicketingTool\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "TicketingTool\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T19:58:38.982Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ProjectsController.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\ProjectsController.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Controllers\\ProjectsController.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\ProjectsController.cs",
-              "RelativeToolTip": "TicketingTool\\Controllers\\ProjectsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T20:03:00.64Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "TicketingTool\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAowE4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T18:53:44.305Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Program.cs",
-              "RelativeDocumentMoniker": "TicketingTool\\Program.cs",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Program.cs",
-              "RelativeToolTip": "TicketingTool\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAQwA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-05T07:43:39.528Z"
+              "WhenOpened": "2025-01-09T20:38:14.953Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Admin\\Index.cshtml",
-              "RelativeDocumentMoniker": "TicketingTool\\Views\\Admin\\Index.cshtml",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Admin\\Index.cshtml",
-              "RelativeToolTip": "TicketingTool\\Views\\Admin\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T19:47:53.725Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Browse\\Edit.cshtml",
               "RelativeDocumentMoniker": "TicketingTool\\Views\\Browse\\Edit.cshtml",
               "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Browse\\Edit.cshtml",
               "RelativeToolTip": "TicketingTool\\Views\\Browse\\Edit.cshtml",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T18:21:34.334Z"
+              "WhenOpened": "2025-01-05T18:21:34.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Projects\\Index.cshtml",
+              "RelativeDocumentMoniker": "TicketingTool\\Views\\Projects\\Index.cshtml",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Projects\\Index.cshtml",
+              "RelativeToolTip": "TicketingTool\\Views\\Projects\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T19:53:57.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProjectsController.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\ProjectsController.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Controllers\\ProjectsController.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\ProjectsController.cs",
+              "RelativeToolTip": "TicketingTool\\Controllers\\ProjectsController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAuwDIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T19:49:50.8Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Browse\\Index.cshtml",
-              "RelativeDocumentMoniker": "TicketingTool\\Views\\Browse\\Index.cshtml",
-              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Browse\\Index.cshtml",
-              "RelativeToolTip": "TicketingTool\\Views\\Browse\\Index.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAFsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T17:59:57.896Z"
+              "Title": "BrowseController.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\BrowseController.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Controllers\\BrowseController.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Controllers\\BrowseController.cs",
+              "RelativeToolTip": "TicketingTool\\Controllers\\BrowseController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T11:30:05.963Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 24,
+              "Title": "Ticket.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Ticket.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Models\\Ticket.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Ticket.cs",
+              "RelativeToolTip": "TicketingTool\\Models\\Ticket.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAUwDgAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T18:29:59.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ToDo.txt",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\ToDo.txt",
+              "RelativeDocumentMoniker": "TicketingTool\\ToDo.txt",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\ToDo.txt",
+              "RelativeToolTip": "TicketingTool\\ToDo.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAACQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-01-09T19:47:52.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "20250109201442_Initial.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Migrations\\20250109201442_Initial.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Migrations\\20250109201442_Initial.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Migrations\\20250109201442_Initial.cs",
+              "RelativeToolTip": "TicketingTool\\Migrations\\20250109201442_Initial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T20:14:42.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAFcAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T20:18:08.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T20:20:15.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAC0AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T20:20:53.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeToolTip": "TicketingTool\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T20:22:23.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Browse\\Details.cshtml",
               "RelativeDocumentMoniker": "TicketingTool\\Views\\Browse\\Details.cshtml",
               "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Views\\Browse\\Details.cshtml",
               "RelativeToolTip": "TicketingTool\\Views\\Browse\\Details.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAFEAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAADgv3IAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-05T07:36:22.129Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
-          "Children": [
+              "WhenOpened": "2025-01-09T18:22:14.437Z",
+              "EditorCaption": ""
+            },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Component.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Component.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Models\\Component.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Component.cs",
+              "RelativeToolTip": "TicketingTool\\Models\\Component.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T19:50:00.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Comment.cs",
+              "RelativeDocumentMoniker": "TicketingTool\\Models\\Comment.cs",
+              "ToolTip": "C:\\Users\\drboo\\Desktop\\TicketingTool\\TicketingTool\\Models\\Comment.cs",
+              "RelativeToolTip": "TicketingTool\\Models\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T18:28:32.843Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,11 +1,79 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewBag.Title = "Admin Panel";
+    var projects = ViewBag.Projects as List<TicketingTool.Models.Project>;
+    var users = ViewBag.Users as List<TicketingTool.Areas.Identity.Data.ApplicationUser>;
 }
 
-<div class="container">
+<div class="container mt-5">
+    <h1>Admin Panel</h1>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
 
-    <h2 class="text-center">You are the admin!</h2>
+    <div class="row">
 
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Create New Project</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="CreateProject" method="post">
+                        <div class="form-group">
+                            <label for="projectName">Project Name</label>
+                            <input type="text" id="projectName" name="projectName" class="form-control" required />
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="projectKey">Project Key</label>
+                            <input type="text" id="projectKey" name="projectKey" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Create Project</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Assign User to Project</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AssignUserToProject" method="post">
+                        <div class="form-group">
+                            <label for="userId">Select User</label>
+                            <select id="userId" name="UserName" class="form-control">
+                                @foreach (var user in users)
+                                {
+                                    <option value="@user.UserName">@user.UserName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="projectId">Select Project</label>
+                            <select id="projectId" name="projectId" class="form-control">
+                                @foreach (var project in projects)
+                                {
+                                    <option value="@project.ID">@project.ProjectName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="role">Role</label>
+                            <select id="role" name="role" class="form-control">
+                                <option value="MANAGER">Project Manager</option>
+                                <option value="USER">User</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Assign</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

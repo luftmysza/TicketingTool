@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using TicketingTool.Areas.Identity.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
+using TicketingTool.Data;
 
 namespace TicketingTool.Models
 {
@@ -13,17 +15,18 @@ namespace TicketingTool.Models
         public int ID { get; set; }
         [Required]
         [Display(Name = "Issue Key")]
+        [MaxLength(50)]
         public string IssueKey { get; set; }
         [Required]
         [ForeignKey(nameof(Project))]
         public int ProjectID { get; set; }
         [Display(Name = "Project")]
-        public Project ProjectRef { get; set; }
+        public Project? ProjectRef { get; set; }
         [Required]
         [ForeignKey(nameof(Component))]
         public int ComponentID { get; set; }
         [Display(Name = "Component")]
-        public Component ComponentRef { get; set; }
+        public Component? ComponentRef { get; set; }
         [StringLength(50)]
         public string? Title { get; set; }
         [StringLength(1000)]
@@ -32,16 +35,16 @@ namespace TicketingTool.Models
         [ForeignKey(nameof(Status))]        
         public int StatusID { get; set; }
         [Display(Name = "Status")]
-        public Status StatusRef { get; set; }
+        public Status? StatusRef { get; set; }
         [Required]
         [ForeignKey(nameof(ApplicationUser))]
         public string CreatorID { get; set; }
         [Display(Name = "Creator")]
-        public ApplicationUser CreatorRef { get; set; }
+        public ApplicationUser? CreatorRef { get; set; }
         [ForeignKey(nameof(ApplicationUser))]
         public string? AssigneeID { get; set; }
         [Display(Name = "Assignee")]
-        public ApplicationUser AssigneeRef { get; set; }
+        public ApplicationUser? AssigneeRef { get; set; }
         [Required]
         [Display(Name = "Created Date")]
         public DateTime? CreatedDate { get; set; }
@@ -50,6 +53,16 @@ namespace TicketingTool.Models
         public DateTime? LastUpdatedDate { get; set; }
         [Display(Name = "Resolved Date")]
         public DateTime? ResolvedDate { get; set; } = null;
-        public ICollection<TicketChange> Changes { get; set; } = new HashSet<TicketChange>();
+        public ICollection<TicketChange> Changes { get; set; } = new List<TicketChange>();
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
+        public static bool Exists(ApplicationDBContext context, string issueKey)
+        {
+            object? obj = context.Ticket.FirstOrDefault(t => t.IssueKey == issueKey);
+
+            if (obj is null) return true;
+
+            return false;
+        }
     }
 }

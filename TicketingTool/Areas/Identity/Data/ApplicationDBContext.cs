@@ -13,6 +13,11 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
 {
     public DbSet<TicketingTool.Models.Ticket> Ticket { get; set; } = default!;
     public DbSet<TicketingTool.Models.Project> Project { get; set; } = default!;
+    public DbSet<TicketingTool.Models.TicketChange> TicketChange { get; set; } = default!;
+    public DbSet<TicketingTool.Models.Comment> Comments { get; set; } = default!;
+    public DbSet<TicketingTool.Models.Component> Components { get; set; } = default!;
+    public DbSet<TicketingTool.Areas.Identity.Data.ProjectUserRole> ProjectUserRole { get; set; } = default!;
+
 
     public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
         : base(options)
@@ -48,18 +53,39 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
                     .WithOne(t => t.AssigneeRef)
                     .HasForeignKey(t => t.AssigneeID)
                     .OnDelete(DeleteBehavior.Restrict);
+
+                entity
+                    .HasAlternateKey(au => au.UserName);
             }
         );
-            
+
+        builder.Entity<Comment>()
+            .HasOne(c => c.TicketRef)
+            .WithMany(t => t.Comments)
+            .HasForeignKey(c => c.IssueKey)
+            .HasPrincipalKey(t => t.IssueKey)
+            .OnDelete(DeleteBehavior.Cascade);
+
         //Project
 
 
         //Ticket Change
-        builder.Entity<TicketChange>()
-            .HasOne(tc => tc.TicketRef)
-            .WithMany(t => t.Changes)
-            .HasForeignKey(tc => tc.TicketID)
-            .OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<TicketChange>(entity =>
+            {
+                entity
+                    .HasOne(tc => tc.TicketRef)
+                    .WithMany(t => t.Changes)
+                    .HasForeignKey(tc => tc.TicketID)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity
+                    .HasOne(tc => tc.ChangedByRef)
+                    .WithMany()
+                    .HasForeignKey(tc => tc.ChangedBy)
+                    .HasPrincipalKey(au => au.UserName);
+            }
+        );
+           
 
         //Ticket
         builder.Entity<Ticket>(entity =>
@@ -106,7 +132,7 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
                     .HasForeignKey(pur => pur.ProjectId);
 
                 entity
-                    .HasOne(pur => pur.UserIdRef)
+                    .HasOne(pur => pur.UserNameRef)
                     .WithMany(au => au.Projects)
                     .HasForeignKey(pur => pur.UserId)
                     .HasPrincipalKey(au => au.UserName);
@@ -117,13 +143,6 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
     }
     private void SeedUserData(ModelBuilder builder)
     {
-        builder.Entity<IdentityRole<int>>().HasData(
-            new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
-            new IdentityRole<int> { Id = 2, Name = "Project Manager", NormalizedName = "MANAGER" },
-            new IdentityRole<int> { Id = 3, Name = "User", NormalizedName = "USER" },
-            new IdentityRole<int> { Id = 4, Name = "Technical User", NormalizedName = "TECH" }
-        );
-
         var hasher = new PasswordHasher<ApplicationUser>();
 
         // Seed ApplicationUser first
@@ -173,6 +192,8 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
             new IdentityUserRole<int> { UserId = 2, RoleId = 4 },
             new IdentityUserRole<int> { UserId = 3, RoleId = 4 }
         );
+
+
     }
     private void SeedMiscData(ModelBuilder builder)
     {
@@ -209,7 +230,35 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
                 new Status { ID = 4, StatusName = "Closed" }
             );
 
+        builder.Entity<IdentityRole<int>>().HasData(
+                new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
+                new IdentityRole<int> { Id = 2, Name = "Manager", NormalizedName = "MANAGER" },
+                new IdentityRole<int> { Id = 3, Name = "User", NormalizedName = "USER" },
+                new IdentityRole<int> { Id = 4, Name = "Technical User", NormalizedName = "TECH" }
+            );
+
+        builder.Entity<ProjectUserRole>().HasData(
+                new ProjectUserRole
+                {
+                    ProjectId = 1,
+                    UserId = "X001",        
+                    RoleId = "ADMIN"          
+                },
+                new ProjectUserRole
+                {
+                    ProjectId = 1,
+                    UserId = "TECH01",       
+                    RoleId = "TECH"           
+                },
+                new ProjectUserRole
+                {
+                    ProjectId = 1,
+                    UserId = "TECH02",      
+                    RoleId = "TECH"            
+                }
+            );
     }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.ConfigureWarnings(warnings =>

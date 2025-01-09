@@ -1,165 +1,100 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using TicketingTool.Data;
 using TicketingTool.Models;
-using Microsoft.AspNetCore.Authorization;
+using TicketingTool.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
-namespace TicketingTool.Controllers
+public class ProjectsController : Controller
 {
-    [Authorize]
-    public class ProjectsController : Controller
+    private readonly ApplicationDBContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
+
+    public ProjectsController(ApplicationDBContext context, UserManager<ApplicationUser> userManager)
     {
-        private readonly ApplicationDBContext _context;
+        _context = context;
+        _userManager = userManager;
+    }
 
-        public ProjectsController(ApplicationDBContext context)
+    public async Task<IActionResult> Index()
+    {
+        var userId = User.Identity.Name; 
+
+        // Fetch projects assigned to the user or visible to an Admin
+        var isAdmin = await _context.ProjectUserRole
+            .AnyAsync(pur => pur.UserId == userId && pur.RoleId == "ADMIN");
+
+        var projects = isAdmin
+            ? await _context.Project.Include(p => p.UserRoles).ToListAsync() // Admin sees all projects
+            : await _context.Project
+                .Include(p => p.UserRoles)
+                .Where(p => p.UserRoles.Any(ur => ur.UserId == userId))
+                .ToListAsync(); // Other users see only their assigned projects
+
+        return View(projects);
+    }
+
+
+    public async Task<IActionResult> Details(int id)
+    {
+        var userId = User.Identity.Name; // Get the logged-in user's ID
+
+        var project = await _context.Project
+            .Include(p => p.Components)
+            .Include(p => p.UserRoles)
+            .ThenInclude(pur => pur.UserNameRef) // Include user details for assignees
+            .FirstOrDefaultAsync(p => p.ID == id);
+
+        if (project == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        // GET: Projects
-        public async Task<IActionResult> Index()
+        // Check if the user is assigned to the project
+        var userRole = project.UserRoles.FirstOrDefault(ur => ur.UserId == userId);
+
+        // Allow only Admins or Managers to see the details
+        if (userRole == null || (userRole.RoleId != "MANAGER" && userRole.RoleId != "ADMIN"))
         {
-            return View(await _context.Project.ToListAsync());
+            return Forbid();
         }
 
-        // GET: Projects/Details/5
-        public async Task<IActionResult> Details(int? id)
+        return View(project);
+    }
+
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddComponent(int projectId, string componentName)
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var project = await _context.Project
+            .Include(p => p.UserRoles)
+            .FirstOrDefaultAsync(p => p.ID == projectId);
+
+        if (project == null)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var project = await _context.Project
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-
-            return View(project);
+            return NotFound();
         }
 
-        // GET: Projects/Create
-        [Authorize(Roles = "Admin")]
-        public IActionResult Create()
+        var userRole = project.UserRoles.FirstOrDefault(ur => ur.UserId == userId);
+        if (userRole == null || !(userRole.RoleId == "MANAGER" || userRole.RoleId == "ADMIN"))
         {
-            return View();
+            return Forbid();
         }
 
-        // POST: Projects/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([Bind("ID,ProjectKey,Counter,ProjectName")] Project project)
+        var component = new Component
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(project);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(project);
-        }
+            ComponentName = componentName,
+            ProjectID = projectId
+        };
 
-        // GET: Projects/Edit/5
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        await _context.Components.AddAsync(component);
+        await _context.SaveChangesAsync();
 
-            var project = await _context.Project.FindAsync(id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-            return View(project);
-        }
-
-        // POST: Projects/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ProjectKey,Counter,ProjectName")] Project project)
-        {
-            if (id != project.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(project);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProjectExists(project.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(project);
-        }
-
-        // GET: Projects/Delete/5
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var project = await _context.Project
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (project == null)
-            {
-                return NotFound();
-            }
-
-            return View(project);
-        }
-
-        // POST: Projects/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var project = await _context.Project.FindAsync(id);
-            if (project != null)
-            {
-                _context.Project.Remove(project);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProjectExists(int id)
-        {
-            return _context.Project.Any(e => e.ID == id);
-        }
+        return RedirectToAction(nameof(Details), new { id = projectId });
     }
 }

@@ -1,16 +1,15 @@
-﻿1. extend Project Entity for PM
-2. create a join table projects-users-roles
-3. populate admin panel with functions like creation of projects, assignment and deletino of roles.
-4. make available to create components for a project to PMs in the Project section
-5. make My Tickets show the assigned and created tickets of the current user;
-6. make most of the elements in the index page for tickets clickable, click means show me all the tickets with this element which i'm privy to
-7. populate home page with some numbers and statistics 
-8. maybe provide statistics for a project to project managers
-
-9. comment section in tickets: model, view (partial?), comment box.
-10. introduce editability of single fields via click on them, without having to use edit view
-11. make edit view as an overlay on the details view
-12. correct styles, introduce dynamics with JS
-13. possibility to create tickets via google forms
-14. maybe introduce a field "contact email adress"
-15. maybe possibility to move tickets across projects
+﻿1. extend Project Entity for PM +
+2. create a join table projects-users-roles +
+3. populate admin panel with functions like creation of projects, assignment and deletino of roles. +
+4. make available to create components for a project to PMs in the Project section +
+5. make My Tickets show the assigned and created tickets of the current user; ?
+6. make most of the elements in the index page for tickets clickable, click means show me all the tickets with this element which i'm privy to -
+7. populate home page with some numbers and statistics -
+8. maybe provide statistics for a project to project managers -
+9. comment section in tickets: model, view (partial?), comment box. +
+10. introduce editability of single fields via click on them, without having to use edit view -
+11. make edit view as an overlay on the details view -
+12. correct styles, introduce dynamics with JS - 
+13. possibility to create tickets via google forms -
+14. maybe introduce a field "contact email adress" -
+15. maybe possibility to move tickets across projects -
