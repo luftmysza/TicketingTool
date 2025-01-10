@@ -60,8 +60,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Browse/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXENyZWF0ZS5jc2h0bWw=
+[C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Browse/CreateStep1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXENyZWF0ZVN0ZXAxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Browse/CreateStep2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXENyZWF0ZVN0ZXAyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Browse/Details.cshtml]
@@ -76,16 +80,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Browse/MyTickets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXE15VGlja2V0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Browse/_TicketTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJvd3NlXF9UaWNrZXRUYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Projects/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Projects/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/drboo/Desktop/TicketingTool/TicketingTool/Views/Projects/Details.cshtml]

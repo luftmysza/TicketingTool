@@ -27,10 +27,7 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        // Customize the ASP.NET Identity model and override the defaults if needed.
-        // For example, you can rename the ASP.NET Identity table names and more.
-        // Add your customizations after calling base.OnModelCreating(builder);
-
+        
 
 
         SeedUserData(builder);
@@ -145,7 +142,6 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
     {
         var hasher = new PasswordHasher<ApplicationUser>();
 
-        // Seed ApplicationUser first
         var adminUser = new ApplicationUser
         {
             Id = 1,
@@ -182,9 +178,33 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
             SecurityStamp = Guid.NewGuid().ToString()
         };
         jobUser.PasswordHash = hasher.HashPassword(jobUser, "password");
+        var user = new ApplicationUser
+        {
+            Id = 4,
+            Name = "Joe",
+            Surname = "Doe",
+            UserName = "X002",
+            NormalizedUserName = "X002",
+            AccessFailedCount = 0,
+            LockoutEnabled = false,
+            SecurityStamp = Guid.NewGuid().ToString()
+        };
+        user.PasswordHash = hasher.HashPassword(jobUser, "password");
+        var pm = new ApplicationUser
+        {
+            Id = 5,
+            Name = "Janusz",
+            Surname = "Kowalski",
+            UserName = "X003",
+            NormalizedUserName = "X003",
+            AccessFailedCount = 0,
+            LockoutEnabled = false,
+            SecurityStamp = Guid.NewGuid().ToString()
+        };
+        pm.PasswordHash = hasher.HashPassword(jobUser, "password");
 
         builder.Entity<ApplicationUser>().HasData(
-            adminUser, ticketCreator, jobUser    
+            adminUser, ticketCreator, jobUser, user, pm  
         );
 
         builder.Entity<IdentityUserRole<int>>().HasData(
@@ -255,6 +275,18 @@ public class ApplicationDBContext : IdentityDbContext<ApplicationUser, IdentityR
                     ProjectId = 1,
                     UserId = "TECH02",      
                     RoleId = "TECH"            
+                },
+                new ProjectUserRole
+                {
+                    ProjectId = 1,
+                    UserId = "X002",
+                    RoleId = "USER"
+                },
+                new ProjectUserRole
+                {
+                    ProjectId = 1,
+                    UserId = "X003",
+                    RoleId = "MANAGER"
                 }
             );
     }

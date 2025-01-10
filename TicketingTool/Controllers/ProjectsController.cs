@@ -6,7 +6,9 @@ using TicketingTool.Data;
 using TicketingTool.Models;
 using TicketingTool.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
+[Authorize]
 public class ProjectsController : Controller
 {
     private readonly ApplicationDBContext _context;
@@ -67,34 +69,23 @@ public class ProjectsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddComponent(int projectId, string componentName)
+    public async Task<IActionResult> AddComponent(int ProjectId, string componentName)
     {
-        var userId = _userManager.GetUserId(User);
+        var userId = User.Identity.Name;
 
         var project = await _context.Project
             .Include(p => p.UserRoles)
-            .FirstOrDefaultAsync(p => p.ID == projectId);
-
-        if (project == null)
-        {
-            return NotFound();
-        }
-
-        var userRole = project.UserRoles.FirstOrDefault(ur => ur.UserId == userId);
-        if (userRole == null || !(userRole.RoleId == "MANAGER" || userRole.RoleId == "ADMIN"))
-        {
-            return Forbid();
-        }
+            .FirstOrDefaultAsync(p => p.ID == ProjectId);
 
         var component = new Component
         {
             ComponentName = componentName,
-            ProjectID = projectId
+            ProjectID = ProjectId
         };
 
         await _context.Components.AddAsync(component);
         await _context.SaveChangesAsync();
 
-        return RedirectToAction(nameof(Details), new { id = projectId });
+        return RedirectToAction(nameof(Details), new { id = ProjectId });
     }
 }

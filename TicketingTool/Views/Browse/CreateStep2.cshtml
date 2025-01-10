@@ -1,0 +1,27 @@
+﻿@model TicketingTool.Models.Ticket
+
+<div class="container mt-5">
+    <h1>Create Ticket</h1>
+
+    <form asp-action="CreateTicket" method="post">
+        <input type="hidden" name="ProjectId" value="@ViewBag.ProjectId" />
+
+        <div class="form-group">
+            <label asp-for="ComponentRef.ComponentName" class="control-label"></label>
+            <select asp-for="ComponentID" class="form-control" asp-items="ViewBag.Component"></select>
+            <span asp-validation-for="ComponentID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-3">
+            <label asp-for="Title">Title</label>
+            <input type="text" id="title" name="title" class="form-control" required />
+        </div>
+
+        <div class="form-group mt-3">
+            <label asp-for="Description">Description</label>
+            <textarea id="description" name="description" class="form-control" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Create Ticket</button>
+    </form>
+</div>

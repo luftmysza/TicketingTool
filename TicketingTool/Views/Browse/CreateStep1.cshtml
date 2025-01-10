@@ -1,0 +1,15 @@
+﻿@model List<TicketingTool.Models.Project>
+
+<div class="container mt-5">
+    <h1>Select a Project</h1>
+
+    <div class="list-group mt-3">
+        @foreach (var project in Model)
+        {
+            <a href="@Url.Action("CreateStep2", "Browse", new { id = project.ID })"
+               class="list-group-item list-group-item-action">
+                @project.ProjectName
+            </a>
+        }
+    </div>
+</div>

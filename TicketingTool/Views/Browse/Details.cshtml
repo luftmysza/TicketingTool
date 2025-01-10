@@ -140,58 +140,58 @@
 
 
 
-        <div class="tab-pane fade" id="updates" role="tabpanel" aria-labelledby="updates-tab">
-            <div class="card">
-                <div class="card-body">
-                    <h6>Recent Updates</h6>
-                       <table>
-                           <thead>
-                               <tr>
-                                    <th>
-                                        Field Changed
-                                    </th>
-                                    <th>
-                                        Old Value
-                                    </th>
-                                    <th>
-                                        New Value
-                                    </th>
-                                    <th>
-                                        Changed By
-                                    </th>
-                                    <th>
-                                        Old At
-                                    </th>
-                               </tr>
-                           </thead>
-                           <tbody>
-                            @{
-                                foreach (var change in Model.Changes)
-                                {
-                                    <tr>
-                                        <td>
-                                            @change.ChangedFieldName
-                                        </td>
-                                        <td>
-                                            @change.OldValue
-                                        </td>
-                                        <td>
-                                            @change.NewValue
-                                        </td>
-                                        <td>
-                                            @change.ChangedBy
-                                        </td>
-                                        <td>
-                                            @change.ChangedAt
-                                        </td>
-                                    </tr>
-                                }
+    <div class="tab-pane fade" id="updates" role="tabpanel" aria-labelledby="updates-tab">
+        <div class="card">
+            <div class="card-body">
+                <h6>Recent Updates</h6>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Field Changed
+                                </th>
+                                <th>
+                                    Old Value
+                                </th>
+                                <th>
+                                    New Value
+                                </th>
+                                <th>
+                                    Changed By
+                                </th>
+                                <th>
+                                    Old At
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @{
+                            foreach (var change in Model.Changes)
+                            {
+                                <tr>
+                                    <td>
+                                        @change.ChangedFieldName
+                                    </td>
+                                    <td>
+                                        @change.OldValue
+                                    </td>
+                                    <td>
+                                        @change.NewValue
+                                    </td>
+                                    <td>
+                                        @change.ChangedBy
+                                    </td>
+                                    <td>
+                                        @change.ChangedAt
+                                    </td>
+                                </tr>
                             }
-                           </tbody>
-                       </table> 
-                </div>
+                        }
+                        </tbody>
+                    </table> 
             </div>
         </div>
+    </div>
        
     </div>
 </div>

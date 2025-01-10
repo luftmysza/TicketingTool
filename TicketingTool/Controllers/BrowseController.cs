@@ -14,6 +14,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Threading.Channels;
 using System.Reflection;
 using System.Net.Sockets;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis;
 
 
 
@@ -35,7 +37,27 @@ namespace TicketingTool.Controllers
         [HttpGet("Browse/Index")]
         public async Task<IActionResult> Index()
         {
-            List<Ticket> tickets = await GetTicketsAsync(false);
+            string currentUser = User.Identity.Name;
+
+            List<int> userProjectIds = await _context.ProjectUserRole
+                    .Where(pur => pur.UserId == currentUser)
+                    .Select(pur => pur.ProjectId)
+                    .Distinct()
+                    .ToListAsync();
+
+            // Fetch tickets for projects the user is a member of
+            List<Ticket> tickets = await _context.Ticket
+                .Where(t => userProjectIds.Contains(t.ProjectID))
+                .ToListAsync();
+
+
+            return View(tickets);
+        }
+
+        [HttpGet("Browse/MyTickets")]
+        public async Task<IActionResult> MyTickets()
+        {
+            List<Ticket> tickets = await _context.Ticket.Where(x => x.AssigneeID == User.Identity.Name || x.CreatorID == User.Identity.Name).ToListAsync();
 
             return View(tickets);
         }
@@ -60,28 +82,60 @@ namespace TicketingTool.Controllers
         }
 
         // GET: Tickets/Create
-        [HttpGet("Create")]
-        public IActionResult Create()
+        [HttpGet("Browse/CreateStep1")]
+
+        public IActionResult CreateStep1()
         {
-            ViewData["Component"] = new SelectList(_context.Set<Component>(), "ID", "ComponentName");
-            ViewData["Project"] = new SelectList(_context.Set<Project>(), "ID", "ProjectName");
+            var currentUser = User.Identity.Name;
+
+            var projects = _context.Project
+                .Where(p => _context.ProjectUserRole.Any(pur => pur.UserId == currentUser && pur.ProjectId == p.ID))
+                .ToList();
+
+            return View(projects);
+        }
+
+        // Step 2: Show form to create ticket with dynamic components
+        [HttpGet("Browse/CreateStep2/")]
+        public IActionResult CreateStep2(int id)
+        {
+            ViewData["Component"] = new SelectList(
+               _context.Set<Component>()
+                   .Where(c => c.ProjectID == id),
+               "ID",
+               "ComponentName",
+            1
+           );
+            ViewBag.ProjectId = id;
             return View();
         }
 
-        // POST: Tickets/Create
-        [HttpPost("Create")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,IssueKey,ProjectID,ComponentID,Title,Description,CreatorID,Status,AssigneeID,CreatedDate,LastUpdatedDate,ResolvedDate")] Ticket ticket)
+        [HttpPost]
+        public async Task<IActionResult> CreateTicket(Ticket ticket)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(ticket);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                string currentUser = User.Identity.Name;
+                Models.Project project = await _context.Project.FirstOrDefaultAsync(p => p.ID == ticket.ProjectID);
+
+                ticket.IssueKey = $"{project.ProjectKey}-{project.Counter+1}";
+                ticket.CreatorID = User.Identity.Name;
+                ticket.CreatedDate = DateTime.Now;
+                ticket.LastUpdatedDate = DateTime.Now;
+                ticket.StatusID = 1;
+                project.Counter++;
+
+                _context.Ticket.Add(ticket);
+                _context.Project.Update(project);
+                _context.SaveChanges();
+
+                TempData["SuccessMessage"] = "Ticket created successfully!";
+                return RedirectToAction("Details", "Browse", new {issueKey = ticket.IssueKey});
             }
-            ViewData["Component"] = new SelectList(_context.Set<Component>(), "ID", "ComponentName", ticket.ComponentID);
-            ViewData["Project"] = new SelectList(_context.Set<Project>(), "ID", "ProjectName", ticket.ProjectID);
-            return View(ticket);
+            catch
+            {
+                return View("SomthingWentWrong");
+            }
         }
 
         // GET: Tickets/Edit/5
@@ -114,7 +168,7 @@ namespace TicketingTool.Controllers
                 ticket.StatusID
             );
 
-            ViewData["Project"] = new SelectList(_context.Set<Project>(), "ID", "ProjectName", ticket.ProjectID);
+            ViewData["Project"] = new SelectList(_context.Set<Models.Project>(), "ID", "ProjectName", ticket.ProjectID);
 
             return View(ticket);
         }
@@ -130,6 +184,11 @@ namespace TicketingTool.Controllers
             if (issueKey != ticket!.IssueKey || ticketOld is null)
             {
                 return NotFound();
+            }
+            var assigneeExists = _context.Users.Any(u => u.UserName == ticket.AssigneeID); 
+            if (!assigneeExists)
+            {
+                ModelState.AddModelError("AssigneeID", "The assignee does not exist.");
             }
             if (ModelState.IsValid)
             {
@@ -153,19 +212,23 @@ namespace TicketingTool.Controllers
                         throw;
                     }
                 }
-                //return View(ticketNew);
                 return RedirectToAction(nameof(Details), "Browse", new { issueKey = ticketNew.IssueKey });
-                //return RedirectToAction(nameof(Index));
             }
             ViewData["Component"] = new SelectList(
                 _context.Set<Component>()
-                    .Where(c => c.ProjectID == ticketNew.ProjectID),
+                    .Where(c => c.ProjectID == ticket.ProjectID),
                 "ID",
                 "ComponentName",
-                ticketNew.ComponentID
+                ticket.ComponentID
             );
-            ViewData["Project"] = new SelectList(_context.Set<Project>(), "ID", "ProjectName", ticketNew.ProjectID);
-            return View(ticketNew);
+            ViewData["Status"] = new SelectList(
+               _context.Set<Status>(),
+               "ID",
+               "StatusName",
+               ticket.StatusID
+           );
+            ViewData["Project"] = new SelectList(_context.Set<Models.Project>(), "ID", "ProjectName", ticket.ProjectID);
+            return View(ticket);
         }
 
         [HttpPost("AddComment")]
@@ -176,7 +239,6 @@ namespace TicketingTool.Controllers
                 return RedirectToAction("Details", new { issueKey = IssueKey });
             }
 
-            // Get the user making the comment
             var userName = User.Identity.Name;
             var user = _context.Users.SingleOrDefault(u => u.UserName == userName);
 
@@ -185,14 +247,12 @@ namespace TicketingTool.Controllers
                 return Unauthorized();
             }
 
-            // Ensure the referenced Ticket exists by IssueKey
             var ticket = await GetTicketAsync(IssueKey, false);
             if (ticket == null)
             {
                 return NotFound();
             }
 
-            // Create and add the comment
             var comment = new Comment
             {
                 IssueKey = IssueKey,
@@ -208,20 +268,21 @@ namespace TicketingTool.Controllers
             return RedirectToAction("Details", new { issueKey = IssueKey });
         }
 
-        public IActionResult DeleteComment(string IssueKey)
-        {
-            var comment = _context.Comments.Find(IssueKey);
-            if (comment == null)
-            {
-                return NotFound();
-            }
+        //TODO
+        //public IActionResult DeleteComment(string IssueKey)
+        //{
+        //    var comment = _context.Comments.Find(IssueKey);
+        //    if (comment == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var issueKey = comment.IssueKey;
-            _context.Comments.Remove(comment);
-            _context.SaveChanges();
+        //    var issueKey = comment.IssueKey;
+        //    _context.Comments.Remove(comment);
+        //    _context.SaveChanges();
 
-            return RedirectToAction("Details", new { issueKey = issueKey });
-        }
+        //    return RedirectToAction("Details", new { issueKey = issueKey });
+        //}
 
         private async Task LogChangesAsync(Ticket ticketOld, Ticket ticketNew, string changedBy)
         {

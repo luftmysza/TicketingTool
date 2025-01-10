@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TicketingTool.Models.Ticket>
+
+@{
+    ViewData["Title"] = "My Tickets";
+    var createdTickets = Model.Where(ticket => ticket.CreatorID == User.Identity.Name);
+    var assignedTickets = Model.Where(ticket => ticket.AssigneeID == User.Identity.Name);
+}
+
+<h1>My Tickets</h1>
+
+<!-- Tabs for switching between panels -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="created-tab" data-bs-toggle="tab" data-bs-target="#created" type="button" role="tab" aria-controls="created" aria-selected="true">Created by Me</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="assigned-tab" data-bs-toggle="tab" data-bs-target="#assigned" type="button" role="tab" aria-controls="assigned" aria-selected="false">Assigned to Me</button>
+    </li>
+</ul>
+
+<!-- Tab content -->
+<div class="tab-content mt-3" id="myTabContent">
+    <!-- Created Tickets Panel -->
+    <div class="tab-pane fade show active" id="created" role="tabpanel" aria-labelledby="created-tab">
+        @Html.Partial("_TicketTable", createdTickets)
+    </div>
+
+    <!-- Assigned Tickets Panel -->
+    <div class="tab-pane fade" id="assigned" role="tabpanel" aria-labelledby="assigned-tab">
+        @Html.Partial("_TicketTable", assignedTickets)
+    </div>
+</div>

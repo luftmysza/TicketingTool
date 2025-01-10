@@ -9,12 +9,14 @@ namespace TicketingTool.Models
         [Required]
         public int ID { get; set; }
         [Required]
+        [StringLength(3)]
         [Display(Name = "Project Key")]
         public string ProjectKey { get; set; }
 
         public int Counter { get; set; }
 
         [Required]
+        [StringLength(20)]
         [Display(Name = "Project")]
         public string ProjectName { get; set; }
         public ICollection<ProjectUserRole> UserRoles { get; set; } = new List<ProjectUserRole>();

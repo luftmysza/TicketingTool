@@ -2,35 +2,64 @@
 
 <h2>Project Details: @Model.ProjectName</h2>
 
-<h3>Components</h3>
-<ul>
-    @foreach (var component in Model.Components)
+<div class="row">
+<div class="col-md-6">
+    <h3>Components</h3>
+    <ul>
+        @foreach (var component in Model.Components)
+        {
+            <li>@component.ComponentName</li>
+        }
+    </ul>
+    @if (Model.UserRoles.Any(ur => ur.RoleId == "MANAGER" || ur.RoleId == "ADMIN"))
     {
-        <li>@component.ComponentName</li>
+
+   
+            <div class="card">
+                <div class="card-header">
+                    <h4>Add Component</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AddComponent" method="post">
+                        <input type="hidden" name="ProjectId" value="@Model.ID" />
+
+                        <div class="form-group">
+                            <label for="componentName">Component Name</label>
+                            <input type="text" id="componentName" name="componentName" class="form-control" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-3">Add Component</button>
+                    </form>
+                </div>
+            </div>
+    
+
     }
-</ul>
+</div>
+<div class="col-md-6">
+    @if (Model.UserRoles.Any(ur => ur.RoleId == "MANAGER" || ur.RoleId == "ADMIN"))
+    {
+        <h3>Assignees</h3>
 
-@if (Model.UserRoles.Any(ur => ur.RoleId == "MANAGER" || ur.RoleId == "ADMIN"))
-{
-    <h3>Assignees</h3>
+        <h4>Project Managers</h4>
+        <ul>
+            @foreach (var manager in Model.UserRoles.Where(ur => ur.RoleId == "MANAGER"))
+            {
+                <li>@manager.UserNameRef.UserName</li>
+            }
+        </ul>
 
-    <h4>Project Managers</h4>
-    <ul>
-        @foreach (var manager in Model.UserRoles.Where(ur => ur.RoleId == "MANAGER"))
-        {
-            <li>@manager.UserNameRef.UserName</li>
-        }
-    </ul>
-
-    <h4>Normal Users</h4>
-    <ul>
-        @foreach (var user in Model.UserRoles.Where(ur => ur.RoleId == "USER"))
-        {
-            <li>@user.UserNameRef.UserName</li>
-        }
-    </ul>
-}
-else
-{
-    <p>You do not have permission to view the list of assignees.</p>
-}
+        <h4>Normal Users</h4>
+        <ul>
+            @foreach (var user in Model.UserRoles.Where(ur => ur.RoleId == "USER"))
+            {
+                <li>@user.UserNameRef.UserName</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>You do not have permission to view the list of assignees.</p>
+    }
+</div>
+</div>

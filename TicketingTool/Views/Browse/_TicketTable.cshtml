@@ -1,0 +1,81 @@
+﻿@model IEnumerable<TicketingTool.Models.Ticket>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().IssueKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProjectRef.ProjectKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ComponentRef.ComponentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Title)
+            </th>
+            <th>
+                Creator
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().StatusRef.StatusName)
+            </th>
+            <th>
+                Assignee
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().LastUpdatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ResolvedDate)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-issueKey="@item.IssueKey">@Html.DisplayFor(modelItem => item.IssueKey)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectRef.ProjectKey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ComponentRef.ComponentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatorRef.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StatusRef.StatusName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssigneeRef.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResolvedDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-issueKey="@item.IssueKey">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
