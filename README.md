@@ -47,3 +47,7 @@ Program jest prostą kopią Jiry:
 #### Dodatkowe informacje:
 - Tickety można komentować.
 - Wprowadzono mechanizm logowania zmian w ticketach (zakładka **Updates**), choć ze względu na możliwość rozbudowy ticketów o dodatkowe pola (dostosowane do bardziej zaawansowanych projektów) wynik nie jestj czytelny dla użytkownika.
+
+---
+
+Więcej na temat tego co miało został zaimlementowane można poczytać w pliku ToDo.
