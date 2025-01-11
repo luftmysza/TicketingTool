@@ -24,16 +24,15 @@ public class ProjectsController : Controller
     {
         var userId = User.Identity.Name; 
 
-        // Fetch projects assigned to the user or visible to an Admin
         var isAdmin = await _context.ProjectUserRole
             .AnyAsync(pur => pur.UserId == userId && pur.RoleId == "ADMIN");
 
         var projects = isAdmin
-            ? await _context.Project.Include(p => p.UserRoles).ToListAsync() // Admin sees all projects
+            ? await _context.Project.Include(p => p.UserRoles).ToListAsync()
             : await _context.Project
                 .Include(p => p.UserRoles)
                 .Where(p => p.UserRoles.Any(ur => ur.UserId == userId))
-                .ToListAsync(); // Other users see only their assigned projects
+                .ToListAsync(); 
 
         return View(projects);
     }
@@ -41,12 +40,12 @@ public class ProjectsController : Controller
 
     public async Task<IActionResult> Details(int id)
     {
-        var userId = User.Identity.Name; // Get the logged-in user's ID
+        var userId = User.Identity.Name; 
 
         var project = await _context.Project
             .Include(p => p.Components)
             .Include(p => p.UserRoles)
-            .ThenInclude(pur => pur.UserNameRef) // Include user details for assignees
+            .ThenInclude(pur => pur.UserNameRef) 
             .FirstOrDefaultAsync(p => p.ID == id);
 
         if (project == null)
@@ -54,10 +53,8 @@ public class ProjectsController : Controller
             return NotFound();
         }
 
-        // Check if the user is assigned to the project
         var userRole = project.UserRoles.FirstOrDefault(ur => ur.UserId == userId);
 
-        // Allow only Admins or Managers to see the details
         if (userRole == null || (userRole.RoleId != "MANAGER" && userRole.RoleId != "ADMIN"))
         {
             return Forbid();
@@ -71,6 +68,11 @@ public class ProjectsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddComponent(int ProjectId, string componentName)
     {
+        if (componentName.Length > 30)
+        {
+            TempData["ErrorMessage"] = "Component name must be up to 30 characters.";
+            return RedirectToAction(nameof(Details), new { id = ProjectId });
+        }
         var userId = User.Identity.Name;
 
         var project = await _context.Project

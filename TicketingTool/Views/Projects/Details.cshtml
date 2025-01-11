@@ -13,6 +13,12 @@
     </ul>
     @if (Model.UserRoles.Any(ur => ur.RoleId == "MANAGER" || ur.RoleId == "ADMIN"))
     {
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
 
    
             <div class="card">

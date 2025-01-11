@@ -10,6 +10,8 @@ namespace TicketingTool.Models
 
         [Required]
         [Display(Name = "Component")]
+        [MaxLength(30, ErrorMessage = "Component name cannot exceed 30 characters.")]
+        [RegularExpression("^[A-Z][a-zA-Z]*$", ErrorMessage = "Component name must start with a capital letter and contain only letters.")]
         public string ComponentName { get; set; }
 
         [Required]

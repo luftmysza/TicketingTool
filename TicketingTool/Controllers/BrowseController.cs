@@ -33,7 +33,6 @@ namespace TicketingTool.Controllers
             _context = context;
         }
 
-        // GET: Tickets
         [HttpGet("Browse/Index")]
         public async Task<IActionResult> Index()
         {
@@ -45,7 +44,6 @@ namespace TicketingTool.Controllers
                     .Distinct()
                     .ToListAsync();
 
-            // Fetch tickets for projects the user is a member of
             List<Ticket> tickets = await _context.Ticket
                 .Where(t => userProjectIds.Contains(t.ProjectID))
                 .ToListAsync();
@@ -62,7 +60,6 @@ namespace TicketingTool.Controllers
             return View(tickets);
         }
 
-        // GET: Tickets/Details/5
         [HttpGet("Details/{issueKey?}")]
         public async Task<IActionResult> Details(string issueKey)
         {
@@ -81,7 +78,6 @@ namespace TicketingTool.Controllers
             return View(ticket);
         }
 
-        // GET: Tickets/Create
         [HttpGet("Browse/CreateStep1")]
 
         public IActionResult CreateStep1()
@@ -95,7 +91,6 @@ namespace TicketingTool.Controllers
             return View(projects);
         }
 
-        // Step 2: Show form to create ticket with dynamic components
         [HttpGet("Browse/CreateStep2/")]
         public IActionResult CreateStep2(int id)
         {
@@ -138,7 +133,6 @@ namespace TicketingTool.Controllers
             }
         }
 
-        // GET: Tickets/Edit/5
         [HttpGet("Edit/{issueKey}")]
         public async Task<IActionResult> Edit(string issueKey)
         {
@@ -173,7 +167,6 @@ namespace TicketingTool.Controllers
             return View(ticket);
         }
 
-        // POST: Tickets/Edit/5
         [HttpPost("Edit/{issueKey}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string issueKey, Ticket? ticket)
